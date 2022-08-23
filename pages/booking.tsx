@@ -1,7 +1,19 @@
+import { PortableText } from '@portabletext/react';
 import React from 'react';
 import Layout from '../components/Layout';
+import { sanityClient } from '../utils';
+export async function getStaticProps() {
+	const businessUnit = await sanityClient.fetch(
+		'*[_type == "businessUnit" && title == "Cultura Salon"][0]'
+	);
+	return {
+		props: {
+			businessUnit
+		}
+	};
+}
 
-export default function Booking() {
+export default function Booking({ businessUnit }: any) {
 	return (
 		<Layout>
 			<div className="flex justify-evenly pt-16">
@@ -17,18 +29,15 @@ export default function Booking() {
 							To see my most up-to-date availability, follow the link below to
 							and it will take you straight to my booking site.
 						</p>
-						<button className="mt-10 rounded-2xl text-4xl font-medium hover:text-white bg-primary-light underline pb-2 text-primary self-center px-4">
+						<a
+							href={businessUnit.bookingSite}
+							className="mt-10 rounded-2xl text-4xl font-medium hover:text-white bg-primary-light underline pb-2 text-primary self-center px-4">
 							Book Now
-						</button>
+						</a>
 					</div>
 					<div className="ml-10 w-1/2">
 						<h3 className="underline">Cancellation Policy</h3>
-						<p>
-							If you need to cancel your appointment, it is required to give 48
-							hours notice prior to your appoinment. If you cancel outside of
-							the 48 hour window, 50% of the service will be charged to the card
-							on file.
-						</p>
+						<PortableText value={businessUnit.cancellationPolicy} />
 					</div>
 				</div>
 			</div>

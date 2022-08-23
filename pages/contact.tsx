@@ -1,7 +1,22 @@
 import React from 'react';
 import Layout from '../components/Layout';
+import { sanityClient } from '../utils';
 
-export default function Contact() {
+export async function getStaticProps() {
+	const businessUnit = await sanityClient.fetch(
+		'*[_type == "businessUnit" && title == "Cultura Salon"][0]'
+	);
+
+	return {
+		props: {
+			businessUnit
+		}
+	};
+}
+
+export default function Contact({ businessUnit }: any) {
+	const mailToLink = `mailto:${businessUnit.email}`;
+	const phoneLink = `tel:${businessUnit.phone}`;
 	return (
 		<Layout>
 			<div className="flex h-full">
@@ -11,24 +26,19 @@ export default function Contact() {
 						<span aria-label="Phone" className="underline block text-2xl">
 							Phone:
 						</span>
-						<a href="tel:+17703695370">770.369.5370</a>
+						<a href={phoneLink}>{businessUnit.phoneNumber}</a>
 					</div>
 					<div className="text-primaryText my-6">
 						<span aria-label="Phone" className="underline block ">
 							Email:
 						</span>
-						<a href="mailto:addysantosantana@gmail.com">
-							addysantosantana@gmail.com
-						</a>
+						<a href={mailToLink}>{businessUnit.email}</a>
 					</div>
 					<div className="text-primaryText mb-6">
 						<span aria-label="Phone" className="underline block text-2xl">
 							Salon Address:
 						</span>
-						<a href="geo:33.792630,-84.286640">
-							2570 Blackmon Drive, Suite 440,<br></br> Decatur, Ga 30033. Loft
-							15
-						</a>
+						<a href="geo:33.792630,-84.286640">{businessUnit.address}</a>
 					</div>
 				</div>
 				<div className="w-1/2"></div>

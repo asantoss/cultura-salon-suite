@@ -7,7 +7,7 @@ export default function Navbar() {
 			<NavLink activeClassName="active" href="/">
 				<a>Home</a>
 			</NavLink>
-			<NavLink activeClassName="active" href="shop">
+			<NavLink activeClassName="active" href="/products">
 				<a>Shop</a>
 			</NavLink>
 			<NavLink activeClassName="active" href="/ourwork">
