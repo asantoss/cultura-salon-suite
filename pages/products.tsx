@@ -6,7 +6,7 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import Layout from '../components/Layout';
 import Product from '../components/Product';
-import { sanityClient } from '../utils';
+import { sanityClient } from '../client';
 import Arrow from '../public/arrowLeft.svg';
 
 type Props = {};

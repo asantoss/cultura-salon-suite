@@ -3,7 +3,7 @@ import { useNextSanityImage } from 'next-sanity-image';
 import Head from 'next/head';
 import Image from 'next/image';
 import Layout from '../components/Layout';
-import { sanityClient } from '../utils';
+import { sanityClient } from '../client';
 
 export async function getStaticProps() {
 	const businessUnit = await sanityClient.fetch(

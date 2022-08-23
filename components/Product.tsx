@@ -3,7 +3,7 @@ import { useNextSanityImage } from 'next-sanity-image';
 import Image from 'next/image';
 import React from 'react';
 import Layout from '../components/Layout';
-import { sanityClient } from '../utils';
+import { sanityClient } from '../client';
 
 type Props = {};
 

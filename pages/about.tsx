@@ -6,7 +6,7 @@ import profileImage from '../public/addyPic.webp';
 import { createClient } from 'next-sanity';
 import { PortableText } from '@portabletext/react';
 import { useNextSanityImage } from 'next-sanity-image';
-import { sanityClient } from '../utils';
+import { sanityClient } from '../client';
 import { Author } from '../schema';
 import { AuthorProfile } from '../components/AuthorProfile';
 

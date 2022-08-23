@@ -1,7 +1,7 @@
 import { PortableText } from '@portabletext/react';
 import React from 'react';
 import Layout from '../components/Layout';
-import { sanityClient } from '../utils';
+import { sanityClient } from '../client';
 export async function getStaticProps() {
 	const businessUnit = await sanityClient.fetch(
 		'*[_type == "businessUnit" && title == "Cultura Salon"][0]'

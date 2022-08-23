@@ -1,7 +1,7 @@
 import { PortableText } from '@portabletext/react';
 import React from 'react';
 import { Author } from '../schema';
-import { sanityClient } from '../utils';
+import { sanityClient } from '../client';
 import Img from 'next/image';
 import { useNextSanityImage } from 'next-sanity-image';
 
