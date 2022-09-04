@@ -1,19 +1,15 @@
-import { PortableText } from '@portabletext/react';
 import { NextPage } from 'next';
 import { groq } from 'next-sanity';
-import { useNextSanityImage } from 'next-sanity-image';
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
-import Layout from '../components/Layout';
-import Product from '../components/Product';
-import { sanityClient } from '../client';
-import Arrow from '../public/arrowLeft.svg';
-
-type Props = {};
+import React, { useState } from 'react';
+import Layout from '../../components/Layout';
+import Product from '../../components/Product';
+import { sanityClient } from '../../client';
+import Arrow from '../../public/arrowLeft.svg';
 
 const Products: NextPage = ({ allProducts }: any) => {
 	const [post, setPost] = useState(0);
-	const [imageProps, setImageProps] = useState(null);
+
 	const selectNext = () => {
 		if (post < allProducts.length - 1) {
 			setPost(post + 1);
@@ -35,7 +31,7 @@ const Products: NextPage = ({ allProducts }: any) => {
 								onClick={selectPrevious}
 								title="Previous"
 								className="bg-white mx-1 text-white p-1 border rounded-full">
-								<Image src={Arrow} alt="Select previous" />
+								&larr;
 							</button>
 						)}
 						{post < allProducts.length - 1 && (
@@ -43,7 +39,7 @@ const Products: NextPage = ({ allProducts }: any) => {
 								onClick={selectNext}
 								title="Next"
 								className="bg-white text-white p-1 border rounded-full">
-								<Image src={Arrow} alt="Select next" />
+								&rarr;
 							</button>
 						)}
 					</div>
